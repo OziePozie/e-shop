@@ -4,15 +4,10 @@ import com.ozie.eshop.dto.UserRegistrationRequest;
 import com.ozie.eshop.model.User;
 import com.ozie.eshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 @Service
-public class UserService implements UserDetailsService {
+public class UserService /*implements UserDetailsService */{
 
     @Autowired
     UserRepository userRepository;
@@ -23,14 +18,14 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(name);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("Пользователь не найден");
-        }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findByUsername(username);
+//        if (user == null) {
+//            throw new UsernameNotFoundException("Пользователь не найден");
+//        }
+//        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+//    }
 
     public User saveUser(User user) {
         return userRepository.save(user);

@@ -1,8 +1,8 @@
 package com.ozie.eshop.model;
 
-import org.springframework.security.core.GrantedAuthority;
 
-public enum UserRole implements GrantedAuthority {
+
+public enum UserRole /*implements GrantedAuthority*/ {
 
     USER("USER"),
     ADMIN("ADMIN");
@@ -10,8 +10,6 @@ public enum UserRole implements GrantedAuthority {
     UserRole(String user) {
     }
 
-
-    @Override
     public String getAuthority() {
         return name();
     }

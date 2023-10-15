@@ -2,6 +2,7 @@ package com.ozie.eshop.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.util.Set;
 
 @Entity
